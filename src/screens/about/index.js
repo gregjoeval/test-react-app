@@ -20,12 +20,11 @@ const About = (props) => {
         About
       </Typography>
       <ContentWell>
-        <Grid
-          container
-          spacing={16}
-          direction="row"
-          justify="space-evenly"
-          alignItems="flex-start"
+        <Grid container
+              spacing={16}
+              direction="row"
+              justify="space-evenly"
+              alignItems="flex-start"
         >
           <Grid item xs={12}>
             <Paper className={classes.paperText}>

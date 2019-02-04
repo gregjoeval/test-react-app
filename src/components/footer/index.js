@@ -6,7 +6,8 @@ import Divider from "@material-ui/core/Divider";
 
 const styles = theme => ({
     content: {
-        marginTop: '1rem'
+        marginTop: '1rem',
+        color: '#BBBBBB'
     },
     button: {
         color: '#BBBBBB'
@@ -31,12 +32,14 @@ const Footer = (props) => {
           >
             GitHub
           </Button>
+          {'|'}
           <Button className={classes.button}
                   target={'_blank'}
                   href={'https://reactjs.org/'}
           >
             React
           </Button>
+          {'|'}
           <Button className={classes.button}
                   target={'_blank'}
                   href={'https://material-ui.com/'}
