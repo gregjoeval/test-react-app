@@ -17,19 +17,20 @@ const styles = theme => ({
 });
 
 const ActionBar = (props) => {
-  const {classes} = props;
-  const linkHome = props => <Link to="/" {...props} />;
-  const linkAbout = props => <Link to="/about" {...props} />;
-  
+  const {classes, children} = props;
   return (
     <AppBar position={"fixed"} color={"default"} className={classes.actionBar}>
       <Toolbar variant={"regular"} className={classes.toolBar}>
-        <Button variant="contained" color="primary" component={linkHome}>
-          {'HOME'}
-        </Button>
-        <Button variant="contained" color="secondary" component={linkAbout}>
-          {'ABOUT'}
-        </Button>
+        {children || (
+          <React.Fragment>
+            <Button variant="contained" color="primary" component={(props) => <Link to="/" {...props}/>}>
+              {'ACTION'}
+            </Button>
+            <Button variant="contained" color="secondary" component={(props) => <Link to="/about" {...props}/>}>
+              {'VERB'}
+            </Button>
+          </React.Fragment>
+        )}
       </Toolbar>
     </AppBar>
   );

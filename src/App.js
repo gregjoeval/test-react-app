@@ -7,9 +7,7 @@ import {MuiThemeProvider} from '@material-ui/core/styles';
 const App = () => {
   return (
     <MuiThemeProvider theme={theme}>
-      <BrowserRouter>
-        <AppRouter/>
-      </BrowserRouter>
+      <AppRouter/>
     </MuiThemeProvider>
   );
 };
