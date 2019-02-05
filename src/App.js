@@ -1,7 +1,7 @@
 import React from 'react';
-import AppRouter from './routes/router';
-import theme from './theme';
 import {MuiThemeProvider} from '@material-ui/core/styles';
+import theme from './themes/default';
+import AppRouter from './routes/router';
 
 const App = () => {
   return (

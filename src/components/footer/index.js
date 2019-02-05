@@ -1,18 +1,9 @@
 import React from 'react';
+import withStyles from "@material-ui/core/styles/withStyles";
+import styles from './styles';
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import withStyles from "@material-ui/core/styles/withStyles";
 import Divider from "@material-ui/core/Divider";
-
-const styles = theme => ({
-    content: {
-        marginTop: '1rem',
-        color: '#BBBBBB'
-    },
-    button: {
-        color: '#BBBBBB'
-    }
-});
 
 const Footer = (props) => {
   const {classes} = props;

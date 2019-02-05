@@ -1,4 +1,6 @@
 import React from 'react';
+import withStyles from "@material-ui/core/styles/withStyles";
+import styles from './styles';
 import Typography from "@material-ui/core/Typography";
 import Layout from "../../components/layout";
 
@@ -12,4 +14,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default withStyles(styles)(NotFound);

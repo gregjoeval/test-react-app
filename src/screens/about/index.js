@@ -1,16 +1,11 @@
 import React from 'react';
+import withStyles from "@material-ui/core/styles/withStyles";
+import styles from './styles';
 import Grid from "@material-ui/core/Grid/Grid";
 import Paper from "@material-ui/core/Paper/Paper";
 import Layout from '../../components/layout';
-import withStyles from "@material-ui/core/styles/withStyles";
 import ContentWell from "../../components/contentWell";
 import Typography from "@material-ui/core/Typography";
-
-const styles = theme => ({
-  paperText: {
-    padding: '1rem'
-  }
-});
 
 const About = (props) => {
   const {classes} = props;
