@@ -1,20 +1,10 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
-import AppBar from "@material-ui/core/AppBar/AppBar";
 import withStyles from "@material-ui/core/styles/withStyles";
+import styles from './styles';
+import Button from '@material-ui/core/Button';
+import {Link} from 'react-router-dom';
+import AppBar from "@material-ui/core/AppBar/AppBar";
 import Toolbar from "@material-ui/core/Toolbar/Toolbar";
-
-const styles = theme => ({
-  actionBar: {
-    top: 'auto',
-    bottom: 0
-  },
-  toolBar: {
-    alignItems: 'center',
-    justifyContent: 'space-around',
-  }
-});
 
 const ActionBar = (props) => {
   const {classes, children} = props;

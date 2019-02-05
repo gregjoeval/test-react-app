@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import Layout from '../../components/layout';
 import withStyles from "@material-ui/core/styles/withStyles";
+import styles from './styles';
+import Layout from '../../components/layout';
 import Typography from "@material-ui/core/Typography";
 import ContentWell from "../../components/contentWell";
 import Paper from "@material-ui/core/Paper";
@@ -11,12 +12,6 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import Button from "@material-ui/core/Button";
 import DialogActions from "@material-ui/core/DialogActions";
 import Grid from "@material-ui/core/Grid";
-
-const styles = theme => ({
-  paperText: {
-    padding: '1rem'
-  }
-});
 
 class Home extends Component {
   state = {

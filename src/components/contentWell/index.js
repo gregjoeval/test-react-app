@@ -1,13 +1,6 @@
 import React from 'react';
 import withStyles from "@material-ui/core/styles/withStyles";
-
-const styles = theme => ({
-  contentWell: {
-    backgroundColor: '#eeeeee',
-    borderRadius: '0.5rem',
-    padding: '1rem'
-  }
-});
+import styles from './styles';
 
 const ContentWell = (props) => {
   const {classes, children} = props;
