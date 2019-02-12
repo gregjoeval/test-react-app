@@ -16,6 +16,16 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import Drawer from "@material-ui/core/Drawer/Drawer";
+import Divider from "@material-ui/core/Divider/Divider";
+import List from "@material-ui/core/List/List";
+import ListItem from "@material-ui/core/ListItem/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText/ListItemText";
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import Category from '@material-ui/icons/Category';
+import {Link} from 'react-router-dom';
 
 const Props = {
   classes: Object
@@ -25,13 +35,22 @@ class NavBar extends Component<Props> {
   state = {
     anchorEl: null,
     mobileMoreAnchorEl: null,
+    isDrawerMenuOpen: false,
+  };
+  
+  handleDrawerMenuOpen = event => {
+    this.setState({ isDrawerMenuOpen: true });
+  };
+  
+  handleDrawerMenuClose = event => {
+    this.setState({ isDrawerMenuOpen: false });
   };
   
   handleProfileMenuOpen = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
   
-  handleMenuClose = () => {
+  handleProfileMenuClose = () => {
     this.setState({ anchorEl: null });
     this.handleMobileMenuClose();
   };
@@ -44,26 +63,57 @@ class NavBar extends Component<Props> {
     this.setState({ mobileMoreAnchorEl: null });
   };
   
+  renderDrawer = () => {
+    const {classes, theme} = this.props;
+    const {isDrawerMenuOpen} = this.state;
+    return (
+      <Drawer
+        className={classes.drawer}
+        variant="persistent"
+        anchor="left"
+        open={isDrawerMenuOpen}
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+      >
+        <div className={classes.drawerHeader}>
+          <IconButton onClick={this.handleDrawerMenuClose}>
+            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          </IconButton>
+        </div>
+        <Divider />
+        <List>
+          {['Home', 'About', 'Not Found'].map((text) => (
+            <ListItem button key={text} component={Link} to={text}>
+              <ListItemIcon><Category/></ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
+    )
+  };
+  
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const { classes } = this.props;
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
     
-    const renderMenu = (
+    const menu = (
       <Menu
         anchorEl={anchorEl}
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={isMenuOpen}
-        onClose={this.handleMenuClose}
+        onClose={this.handleProfileMenuClose}
       >
-        <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
+        <MenuItem onClick={this.handleProfileMenuClose}>Profile</MenuItem>
+        <MenuItem onClick={this.handleProfileMenuClose}>My account</MenuItem>
       </Menu>
     );
     
-    const renderMobileMenu = (
+    const mobileMenu = (
       <Menu
         anchorEl={mobileMoreAnchorEl}
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
@@ -100,7 +150,11 @@ class NavBar extends Component<Props> {
       <div className={classes.root}>
         <AppBar position="fixed">
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
+            <IconButton className={classes.menuButton}
+                        color="inherit"
+                        aria-label="Open drawer"
+                        onClick={this.handleDrawerMenuOpen}
+            >
               <MenuIcon />
             </IconButton>
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
@@ -146,11 +200,12 @@ class NavBar extends Component<Props> {
             </div>
           </Toolbar>
         </AppBar>
-        {renderMenu}
-        {renderMobileMenu}
+        {this.renderDrawer()}
+        {menu}
+        {mobileMenu}
       </div>
     );
   }
 }
 
-export default withStyles(styles)(NavBar);
+export default withStyles(styles, { withTheme: true })(NavBar);

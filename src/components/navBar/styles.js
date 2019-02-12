@@ -1,5 +1,7 @@
 import {fade} from "@material-ui/core/styles/colorManipulator";
 
+const drawerWidth = 240;
+
 const styles = theme => ({
   root: {
     width: '100%',
@@ -67,6 +69,19 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       display: 'none',
     },
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  drawerHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0 8px',
+    justifyContent: 'flex-end',
   },
 });
 
